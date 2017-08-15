@@ -15,9 +15,6 @@ public class ServeStaff {
     @Column(name = "id", nullable = false)
     private int id;
 
-    /** 员工id**/
-    public int personId;
-
     /** 部门id **/
     public int deptId;
 

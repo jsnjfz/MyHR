@@ -1,5 +1,8 @@
 package com.app.hr.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -118,6 +121,16 @@ public class PersonInfo implements Serializable {
     /** 状态**/
     @Column
     private int status;
+
+    @CreationTimestamp
+    private Date recCreateTime;
+
+    @UpdateTimestamp
+    private Date recCreateUser;
+
+    /** 表关联 **/
+    @OneToOne
+    private ServeStaff serveStaff;
 
     public int getId() {
         return id;
@@ -325,5 +338,13 @@ public class PersonInfo implements Serializable {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public ServeStaff getServeStaff() {
+        return serveStaff;
+    }
+
+    public void setServeStaff(ServeStaff serveStaff) {
+        this.serveStaff = serveStaff;
     }
 }

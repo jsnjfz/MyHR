@@ -4,8 +4,11 @@ import com.app.hr.dao.PersonInfoDao;
 import com.app.hr.model.PersonInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * @Author fz
@@ -21,13 +24,14 @@ public class PersonInfoController {
     @RequestMapping("/getbyname")
     @ResponseBody
     public String getByName(String name) {
-        String userId;
-        PersonInfo user = personInfoDao.findByName(name);
-        if (user != null) {
-            userId = String.valueOf(user.getId());
-            return "The user id is: " + userId;
-        }
-        return "user " + name + " is not exist.";
+//        String userId;
+//        PersonInfo user = personInfoDao.findByName(name);
+//        if (user != null) {
+//            userId = String.valueOf(user.getId());
+//            return "The user id is: " + userId;
+//        }
+//        return "user " + name + " is not exist.";
+        return null;
     }
 
     @RequestMapping("/addpersion")
@@ -41,4 +45,24 @@ public class PersonInfoController {
         }
         return "user id is not exist.";
     }
+
+//    @RequestMapping("/article-list")
+//    public String listArticle(ModelMap map) {
+//        List<PersonInfo> test = personInfoDao.findByName("张三");
+//        map.addAttribute("persons", test);
+//        return "article-list";
+//    }
+
+    @RequestMapping("/index")
+    public String index(ModelMap map) {
+        return "index";
+    }
+
+    @ResponseBody
+    @RequestMapping("/all")
+    public List<PersonInfo> querytest() {
+        List<PersonInfo> test = personInfoDao.findByName("张三");
+        return test;
+    }
+
 }
