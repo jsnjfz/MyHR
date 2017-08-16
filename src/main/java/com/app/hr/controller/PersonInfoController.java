@@ -2,12 +2,17 @@ package com.app.hr.controller;
 
 import com.app.hr.dao.PersonInfoDao;
 import com.app.hr.model.PersonInfo;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
+import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -60,9 +65,10 @@ public class PersonInfoController {
 
     @ResponseBody
     @RequestMapping("/all")
-    public List<PersonInfo> querytest() {
-        List<PersonInfo> test = personInfoDao.findByName("张三");
+    public DataTablesOutput<PersonInfo> querytest(@Valid DataTablesInput input) {
+        DataTablesOutput<PersonInfo> test = personInfoDao.findAll(input);
         return test;
     }
+
 
 }
