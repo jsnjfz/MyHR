@@ -19,12 +19,7 @@ public class PersonInfo implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private int id;
-
-    /** 工号**/
-    @Column
-    private String empno;
+    private int personInfoId;
 
     /** 姓名 **/
     @Column
@@ -102,14 +97,6 @@ public class PersonInfo implements Serializable {
     @Column
     private String weichatNum;
 
-    /** 入职日期**/
-    @Column
-    private Date joinDate;
-
-    /** 转正日期**/
-    @Column
-    private Date probationEndDate;
-
     /** 参加工作时间**/
     @Column
     private Date startWorkDate;
@@ -128,24 +115,12 @@ public class PersonInfo implements Serializable {
     @UpdateTimestamp
     private Date recCreateUser;
 
-    /** 表关联 **/
-    @OneToOne
-    private ServeStaff serveStaff;
-
-    public int getId() {
-        return id;
+    public int getPersonInfoId() {
+        return personInfoId;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getEmpno() {
-        return empno;
-    }
-
-    public void setEmpno(String empno) {
-        this.empno = empno;
+    public void setPersonInfoId(int personInfoId) {
+        this.personInfoId = personInfoId;
     }
 
     public String getName() {
@@ -300,22 +275,6 @@ public class PersonInfo implements Serializable {
         this.weichatNum = weichatNum;
     }
 
-    public Date getJoinDate() {
-        return joinDate;
-    }
-
-    public void setJoinDate(Date joinDate) {
-        this.joinDate = joinDate;
-    }
-
-    public Date getProbationEndDate() {
-        return probationEndDate;
-    }
-
-    public void setProbationEndDate(Date probationEndDate) {
-        this.probationEndDate = probationEndDate;
-    }
-
     public Date getStartWorkDate() {
         return startWorkDate;
     }
@@ -340,11 +299,4 @@ public class PersonInfo implements Serializable {
         this.status = status;
     }
 
-    public ServeStaff getServeStaff() {
-        return serveStaff;
-    }
-
-    public void setServeStaff(ServeStaff serveStaff) {
-        this.serveStaff = serveStaff;
-    }
 }

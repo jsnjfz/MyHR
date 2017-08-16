@@ -54,14 +54,13 @@
             <thead>
             <tr class="text-c">
                 <th width="25"><input type="checkbox" name="" value=""></th>
-                <th width="80">ID</th>
-                <th>标题</th>
-                <th width="80">分类</th>
-                <th width="80">来源</th>
-                <th width="120">更新时间</th>
-                <th width="75">浏览次数</th>
-                <th width="60">发布状态</th>
-                <th width="120">操作</th>
+                <th width="80">姓名</th>
+                <th width="80">员工状态</th>
+                <th width="80">员工类型</th>
+                <th width="80">职位</th>
+                <th width="120">部门</th>
+                <th width="75">工号</th>
+                <th width="60">入职日期</th>
             </tr>
             </thead>
         </table>
@@ -91,7 +90,7 @@
 
     $().ready(function () {
         $('#appTable').DataTable({
-            'ajax': '/all',
+            'ajax': '/getEmployees',
             'serverSide': true,
             columns: [{
                 data: null,
@@ -101,9 +100,19 @@
                     return "<td><input type='checkbox' name='allocated' value='" + row.id + "'></td>";
                 }
             }, {
-                data: 'personinfoid'
+                data: 'personInfo.name'
             }, {
-                data: 'name'
+                data: 'status'
+            }, {
+                data: 'employeeType'
+            }, {
+                data: null
+            }, {
+                data: null
+            }, {
+                data: 'empNo'
+            }, {
+                data: 'joinDate'
             }]
         });
     });

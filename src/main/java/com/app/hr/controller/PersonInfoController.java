@@ -46,7 +46,7 @@ public class PersonInfoController {
         user.setName("张三");
         PersonInfo user2 = personInfoDao.save(user);
         if (user2 != null) {
-            return "The user id is: " + user2.getId();
+            return "The user id is: " + user2.getPersonInfoId();
         }
         return "user id is not exist.";
     }
@@ -66,8 +66,8 @@ public class PersonInfoController {
     @ResponseBody
     @RequestMapping("/all")
     public DataTablesOutput<PersonInfo> querytest(@Valid DataTablesInput input) {
-        DataTablesOutput<PersonInfo> test = personInfoDao.findAll(input);
-        return test;
+        PersonInfo test = personInfoDao.findByName("cc");
+        return null;
     }
 
 

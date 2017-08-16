@@ -1,12 +1,8 @@
 package com.app.hr.dao;
 
 import com.app.hr.model.PersonInfo;
-import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.data.jpa.datatables.repository.DataTablesRepository;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * @Author fz
@@ -15,7 +11,7 @@ import java.util.List;
 
 @Transactional
 public interface PersonInfoDao extends DataTablesRepository<PersonInfo, Long> {
-//    PersonInfo findByName(String name);
+    PersonInfo findByName(String name);
 //        DataTablesOutput findByName(String userName);
 //    public PersonInfo save(PersonInfo personInfo);
 //    public PersonInfo update(PersonInfo personInfo);
